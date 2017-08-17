@@ -114,7 +114,6 @@ _product_single_value_vars :=
 # Variables that are lists of values.
 _product_list_vars :=
 
-_product_list_vars += PRODUCT_BUILD_PROP_OVERRIDES
 _product_single_value_vars += PRODUCT_NAME
 _product_single_value_vars += PRODUCT_MODEL
 

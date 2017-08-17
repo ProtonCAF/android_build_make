@@ -808,6 +808,26 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
+  custom_ver = target_info.GetBuildProp("ro.proton.version")
+  custom_vercode = target_info.GetBuildProp("ro.proton.version_code")
+  android_ver = target_info.GetBuildProp("ro.build.version.release")
+  spl = target_info.GetBuildProp("ro.build.version.security_patch")
+  build_id = target_info.GetBuildProp("ro.build.id")
+  build_date = target_info.GetBuildProp("ro.build.date")
+  device = target_info.GetBuildProp("ro.product.device")
+  manufacturer = target_info.GetBuildProp("ro.product.manufacturer")
+
+  script.Print("***********************************************");
+  script.Print(" ProtonAOSP version : %s %s" % (custom_vercode, custom_ver));
+  script.Print(" Android version   : %s (%s)" % (android_ver, build_id));
+  script.Print(" Security patch    : %s" % spl);
+  script.Print(" Build date        : %s" % build_date);
+  script.Print("***********************************************");
+  script.Print(" Device          : %s" % device);
+  script.Print(" Manufacturer    : %s" % manufacturer);
+  script.Print("***********************************************");
+  script.Print(" By: @kdrag0n & @iamsj7 ");
+
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
 
