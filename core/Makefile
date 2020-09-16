@@ -4934,7 +4934,7 @@ name := $(TARGET_PRODUCT)
 ifeq ($(TARGET_BUILD_TYPE),debug)
   name := $(name)_debug
 endif
-name := $(name)-ota-$(FILE_NAME_TAG)
+name := $(name)-$(PLATFORM_VERSION)-$(shell date +%Y%m%d-%H%M)-vanilla
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 INTERNAL_OTA_METADATA := $(PRODUCT_OUT)/ota_metadata
@@ -4954,6 +4954,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(OTA_FROM_TARGET_
 
 .PHONY: otapackage
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
+	   @echo "OTA Package:" $(INTERNAL_OTA_PACKAGE_TARGET) >&2
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
 name := $(TARGET_PRODUCT)
