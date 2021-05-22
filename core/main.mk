@@ -360,7 +360,7 @@ BUILD_WITHOUT_PV := true
 ADDITIONAL_BUILD_PROPERTIES += net.bt.name=Android
 
 # Include vendor build hook
--include vendor/proton/build/main.mk
+#-include vendor/proton/build/main.mk
 
 # ------------------------------------------------------------
 # Include vendor specific additions to build properties
